@@ -1,0 +1,1 @@
+from ea_agents.plugins.selenium3.agent_selenium import initialize
