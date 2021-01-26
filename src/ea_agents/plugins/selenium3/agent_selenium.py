@@ -190,7 +190,7 @@ class SeleniumServer(GenericTool.Tool):
             else:
                 __cmd__ = r'%s -log "%s/selenium_%s.log" -debug true' % (
                                                                             BIN_LINUX, 
-                                                                            "%s\%s" % ( Settings.getDirExec(), 
+                                                                            "%s/%s" % ( Settings.getDirExec(), 
                                                                                         Settings.get( 'Paths', 'logs' )),
                                                                             self.toolName
                                                                             )
