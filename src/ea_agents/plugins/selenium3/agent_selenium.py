@@ -68,7 +68,7 @@ class WebdriverRemote(webdriver.Remote):
         return {'success': 0, 'value': None, 'sessionId': self.session_id}
 
 BIN_WIN = r'"%s\Plugins\selenium3\bin\selenium-script.bat" -jar ' % ( Settings.getDirExec() )
-BIN_LINUX = "java \"%s/Plugins/selenium3/selenium-server-standalone.jar\"" % ( Settings.getDirExec() )
+BIN_LINUX = "java -jar \"%s/plugins/selenium3/bin/selenium-server-standalone.jar\"" % ( Settings.getDirExec() )
 
 def initialize(*args, **kwargs):
     """Wrapper to initialize the object agent"""
