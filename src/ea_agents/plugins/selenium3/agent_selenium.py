@@ -189,21 +189,30 @@ class SeleniumServer(GenericTool.Tool):
                 __cmd__ += r' -log "%s\selenium3_%s.log"  -debug' % ( "%s\%s" % ( Settings.getDirExec(), 
                                                                                     Settings.get( 'Paths', 'logs' )), 
                                                                           self.toolName)
+                logging.debug( "external program called: %s" % __cmd__)
+
+                self.seleniumProcess = subprocess.Popen(
+                                                        __cmd__, 
+                                                        stdin=subprocess.PIPE, 
+                                                        stdout=subprocess.DEVNULL, 
+                                                        stderr=subprocess.STDOUT,
+                                                        shell=True 
+                                                      )
             else:
-                __cmd__ = r'%s -log "%s/selenium_%s.log"' % (
+                __cmd__ = r'%s -log "%s/selenium_%s.log" -debug' % (
                                                                             BIN_LINUX, 
                                                                             "%s/%s" % ( Settings.getDirExec(), 
                                                                                         Settings.get( 'Paths', 'logs' )),
                                                                             self.toolName
                                                                             )
-            logging.debug( "external program called: %s" % __cmd__)
+                logging.debug( "external program called: %s" % __cmd__)
 
-            self.seleniumProcess = subprocess.Popen(
-                                                    shlex.split(__cmd__), 
-                                                    stdin=subprocess.PIPE, 
-                                                    stdout=subprocess.DEVNULL, 
-                                                    stderr=subprocess.STDOUT
-                                                  )
+                self.seleniumProcess = subprocess.Popen(
+                                                        shlex.split(__cmd__), 
+                                                        stdin=subprocess.PIPE, 
+                                                        stdout=subprocess.DEVNULL, 
+                                                        stderr=subprocess.STDOUT
+                                                      )
             logging.debug("selenium server thread started pid=%s" % self.seleniumProcess.pid)
 
             # checking if the server is properly started
