@@ -36,6 +36,7 @@ import os
 import socket
 import base64
 import time
+import shlex
 
 from urllib import request as requestlib
     
@@ -197,11 +198,7 @@ class SeleniumServer(GenericTool.Tool):
             logging.debug( "external program called: %s" % __cmd__)
 
             self.seleniumProcess = subprocess.Popen(
-                                                    __cmd__, 
-                                                    stdin=subprocess.PIPE, 
-                                                    stdout=subprocess.DEVNULL, 
-                                                    stderr=subprocess.STDOUT,
-                                                    shell=True 
+                                                    shlex.split(__cmd__) 
                                                   )
             logging.debug("selenium server thread started pid=%s" % self.seleniumProcess.pid)
 
