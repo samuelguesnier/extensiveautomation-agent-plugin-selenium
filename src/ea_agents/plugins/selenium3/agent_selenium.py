@@ -202,8 +202,7 @@ class SeleniumServer(GenericTool.Tool):
                                                     shlex.split(__cmd__), 
                                                     stdin=subprocess.PIPE, 
                                                     stdout=subprocess.DEVNULL, 
-                                                    stderr=subprocess.STDOUT,
-                                                    shell=True
+                                                    stderr=subprocess.STDOUT
                                                   )
             logging.debug("selenium server thread started pid=%s" % self.seleniumProcess.pid)
 
