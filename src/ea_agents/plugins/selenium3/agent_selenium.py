@@ -190,7 +190,7 @@ class SeleniumServer(GenericTool.Tool):
                                                                                     Settings.get( 'Paths', 'logs' )), 
                                                                           self.toolName)
             else:
-                __cmd__ = r'%s -log "%s/selenium_%s.log"' % (
+                __cmd__ = r'%s -log "%s/selenium_%s.log"  -debug' % (
                                                                             BIN_LINUX, 
                                                                             "%s/%s" % ( Settings.getDirExec(), 
                                                                                         Settings.get( 'Paths', 'logs' )),
@@ -203,8 +203,7 @@ class SeleniumServer(GenericTool.Tool):
                                                     stdin=subprocess.PIPE, 
                                                     stdout=subprocess.DEVNULL, 
                                                     stderr=subprocess.STDOUT,
-                                                    shell=True,
-                                                    check=True
+                                                    shell=True
                                                   )
             logging.debug("selenium server thread started pid=%s" % self.seleniumProcess.pid)
 
