@@ -136,7 +136,8 @@ class SeleniumServer(GenericTool.Tool):
                                                 stdin=subprocess.PIPE, 
                                                 stdout=subprocess.DEVNULL, 
                                                 stderr=subprocess.STDOUT,
-                                                shell=True
+                                                shell=True,
+                                                check=True
                                             )
                     kill.communicate()
                     kill.terminate()
@@ -202,7 +203,8 @@ class SeleniumServer(GenericTool.Tool):
                                                     stdin=subprocess.PIPE, 
                                                     stdout=subprocess.DEVNULL, 
                                                     stderr=subprocess.STDOUT,
-                                                    shell=True  
+                                                    shell=True,
+                                                    check=True
                                                   )
             logging.debug("selenium server thread started pid=%s" % self.seleniumProcess.pid)
 
