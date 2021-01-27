@@ -198,7 +198,11 @@ class SeleniumServer(GenericTool.Tool):
             logging.debug( "external program called: %s" % __cmd__)
 
             self.seleniumProcess = subprocess.Popen(
-                                                    shlex.split(__cmd__) 
+                                                    shlex.split(__cmd__), 
+                                                    stdin=subprocess.PIPE, 
+                                                    stdout=subprocess.DEVNULL, 
+                                                    stderr=subprocess.STDOUT,
+                                                    shell=True  
                                                   )
             logging.debug("selenium server thread started pid=%s" % self.seleniumProcess.pid)
 
